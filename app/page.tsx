@@ -25,7 +25,7 @@ export default function Home() {
           mb="sm"
           mt="xl"
         >
-          Monitoring....
+          Monitor your home like never before
         </Text>
         <Center w={"100%"}>
           <Box w={"clamp(300px, 80%, 800px)"}>

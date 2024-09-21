@@ -3,12 +3,12 @@
 import '@vidstack/react/player/styles/default/theme.css';
 import '@vidstack/react/player/styles/default/layouts/video.css';
 
-import { isDASHProvider, MediaPlayer, MediaProvider, MediaProviderAdapter } from '@vidstack/react';
+import { isDASHProvider, MediaPlayer, MediaProvider, MediaProviderAdapter, Poster } from '@vidstack/react';
 import { defaultLayoutIcons, DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
 import { useEffect, useState } from 'react';
 
-const BUFF_CAP_SEC = 6;
-const TOLERANCE_FACTOR = 1.8; // (1.1 to 1.8) Higher value means more tolerance to network fluctuations lower means more real-time playback
+const BUFF_CAP_SEC = 8;
+const TOLERANCE_FACTOR = 1.4; // (1 to 2) Higher value means more tolerance to network fluctuations lower means more real-time playback
 
 export function Video() {
   const [isClient, setIsClient] = useState(false);
@@ -66,9 +66,15 @@ export function Video() {
   }
 
   return (
-    <MediaPlayer load='play' title="Sprite Fight" src="http://192.168.107.249:6619/manifest.mpd" onProviderChange={onProviderChange}>
-      <MediaProvider />
-      <DefaultVideoLayout thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt" icons={defaultLayoutIcons} />
+    <MediaPlayer load='play' title="Security Surveillance" src="https://stream-server.040203.xyz/manifest.mpd" onProviderChange={onProviderChange}>
+      <MediaProvider>
+        <Poster
+          src="/security.avif"
+          className="vds-poster"
+          alt="A smart home with user controlling with smartphone"
+        />
+      </MediaProvider>
+      <DefaultVideoLayout icons={defaultLayoutIcons} />
     </MediaPlayer>
   )
 }
